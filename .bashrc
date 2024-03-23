@@ -133,6 +133,7 @@ fi
 alias gs="git status"
 alias gd="git diff"
 alias gc="git commit"
+alias gpom="git push origin main"
 
 ## Dirs
 
