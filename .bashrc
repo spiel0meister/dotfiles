@@ -121,9 +121,23 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+# If the Coding directory doesn't exist, create it
+if [ ! -d "$HOME/Coding/" ]; then
+    mkdir Coding
+fi
+
+# custom aliases
+
+## Git
+
 alias gs="git status"
 alias gd="git diff"
 alias gc="git commit"
+
+## Dirs
+
+alias cdrs="cd Coding/Rust"
+alias cdpy="cd Coding/Python"
 
 ##-----------------------------------------------------
 ## synth-shell-prompt.sh
