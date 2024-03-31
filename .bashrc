@@ -163,3 +163,6 @@ fi
 if [ -f /home/sovic/.config/synth-shell/better-history.sh ] && [ -n "$( echo $- | grep i )" ]; then
 	source /home/sovic/.config/synth-shell/better-history.sh
 fi
+
+eval "$(zoxide init bash)" # required for zoxide
+export PATH=/opt:$PATH
