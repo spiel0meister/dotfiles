@@ -165,4 +165,4 @@ if [ -f /home/sovic/.config/synth-shell/better-history.sh ] && [ -n "$( echo $- 
 fi
 
 eval "$(zoxide init bash)" # required for zoxide
-export PATH=/opt:$PATH
+export PATH=/opt/bin:$PATH
