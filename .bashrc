@@ -128,6 +128,10 @@ fi
 
 # custom aliases
 
+## Python, PiP
+alias gpython3="~/.venv/bin/python3"
+alias gpip="~/.venv/bin/pip"
+
 ## Git
 
 alias gs="git status"
@@ -135,10 +139,12 @@ alias gd="git diff"
 alias gc="git commit"
 alias gpom="git push origin main"
 
-## Dirs
-
-alias cdrs="cd Coding/Rust"
-alias cdpy="cd Coding/Python"
+# Neovim / Neovide
+if [ -f /home/sovic/.cargo/bin/neovide ]; then
+    alias nv="neovide"
+else
+    alias nv="nvim"
+fi
 
 ##-----------------------------------------------------
 ## synth-shell-prompt.sh
@@ -165,4 +171,5 @@ if [ -f /home/sovic/.config/synth-shell/better-history.sh ] && [ -n "$( echo $- 
 fi
 
 eval "$(zoxide init bash)" # required for zoxide
+
 export PATH=/opt/bin:$PATH
