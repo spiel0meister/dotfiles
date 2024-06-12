@@ -121,11 +121,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# If the Coding directory doesn't exist, create it
-if [ ! -d "$HOME/Coding/" ]; then
-    mkdir Coding
-fi
-
 # custom aliases
 
 ## Python, PiP
@@ -140,7 +135,7 @@ alias gc="git commit"
 alias gpom="git push origin main"
 
 # Neovim / Neovide
-if [ -f /home/sovic/.cargo/bin/neovide ]; then
+if [ -f $HOME/.cargo/bin/neovide ]; then
     alias nv="neovide"
 else
     alias nv="nvim"
@@ -148,26 +143,26 @@ fi
 
 ##-----------------------------------------------------
 ## synth-shell-prompt.sh
-if [ -f /home/sovic/.config/synth-shell/synth-shell-prompt.sh ] && [ -n "$( echo $- | grep i )" ]; then
-	source /home/sovic/.config/synth-shell/synth-shell-prompt.sh
+if [ -f $HOME/.config/synth-shell/synth-shell-prompt.sh ] && [ -n "$( echo $- | grep i )" ]; then
+	source $HOME/.config/synth-shell/synth-shell-prompt.sh
 fi
 
 ##-----------------------------------------------------
 ## better-ls
-if [ -f /home/sovic/.config/synth-shell/better-ls.sh ] && [ -n "$( echo $- | grep i )" ]; then
-	source /home/sovic/.config/synth-shell/better-ls.sh
+if [ -f $HOME/.config/synth-shell/better-ls.sh ] && [ -n "$( echo $- | grep i )" ]; then
+	source $HOME/.config/synth-shell/better-ls.sh
 fi
 
 ##-----------------------------------------------------
 ## alias
-if [ -f /home/sovic/.config/synth-shell/alias.sh ] && [ -n "$( echo $- | grep i )" ]; then
-	source /home/sovic/.config/synth-shell/alias.sh
+if [ -f $HOME/.config/synth-shell/alias.sh ] && [ -n "$( echo $- | grep i )" ]; then
+	source $HOME/.config/synth-shell/alias.sh
 fi
 
 ##-----------------------------------------------------
 ## better-history
-if [ -f /home/sovic/.config/synth-shell/better-history.sh ] && [ -n "$( echo $- | grep i )" ]; then
-	source /home/sovic/.config/synth-shell/better-history.sh
+if [ -f $HOME/.config/synth-shell/better-history.sh ] && [ -n "$( echo $- | grep i )" ]; then
+	source $HOME/.config/synth-shell/better-history.sh
 fi
 
 eval "$(zoxide init bash)" # required for zoxide
