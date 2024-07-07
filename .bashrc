@@ -141,6 +141,8 @@ else
     alias nv="nvim"
 fi
 
+alias feh="feh -B black --keep-zoom-vp"
+
 ##-----------------------------------------------------
 ## synth-shell-prompt.sh
 if [ -f $HOME/.config/synth-shell/synth-shell-prompt.sh ] && [ -n "$( echo $- | grep i )" ]; then
@@ -165,6 +167,9 @@ if [ -f $HOME/.config/synth-shell/better-history.sh ] && [ -n "$( echo $- | grep
 	source $HOME/.config/synth-shell/better-history.sh
 fi
 
-eval "$(zoxide init bash)" # required for zoxide
-
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export PATH=/opt/bin:$PATH
+
+eval "$(zoxide init bash)" # required for zoxide
+eval "$(fzf --bash)" # Set up fzf key bindings and fuzzy completion
+
