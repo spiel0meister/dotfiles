@@ -128,19 +128,15 @@ alias gpython3="~/.venv/bin/python3"
 alias gpip="~/.venv/bin/pip"
 
 ## Git
-
 alias gs="git status"
 alias gd="git diff"
 alias gc="git commit"
 alias gpom="git push origin main"
 
-# Neovim / Neovide
-if [ -f $HOME/.cargo/bin/neovide ]; then
-    alias nv="neovide"
-else
-    alias nv="nvim"
-fi
+## Neovim
+alias nv="nvim"
 
+## feh (image viewer)
 alias feh="feh -B black --keep-zoom-vp"
 
 ##-----------------------------------------------------
