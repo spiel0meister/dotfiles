@@ -167,5 +167,7 @@ fi
 export PATH=/opt/bin:$PATH
 
 eval "$(zoxide init bash)" # required for zoxide
+alias cd="z"
+
 eval "$(fzf --bash)" # Set up fzf key bindings and fuzzy completion
 
