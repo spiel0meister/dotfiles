@@ -139,6 +139,10 @@ alias nv="nvim"
 ## feh (image viewer)
 alias feh="feh -B black --keep-zoom-vp"
 
+## adding verbose to commands
+alias cp="cp -v"
+alias mv="mv -v"
+
 ##-----------------------------------------------------
 ## synth-shell-prompt.sh
 if [ -f $HOME/.config/synth-shell/synth-shell-prompt.sh ] && [ -n "$( echo $- | grep i )" ]; then
@@ -171,3 +175,5 @@ alias cd="z"
 
 eval "$(fzf --bash)" # Set up fzf key bindings and fuzzy completion
 
+
+[ -f "/home/overlord/.ghcup/env" ] && . "/home/overlord/.ghcup/env" # ghcup-env
