@@ -177,3 +177,6 @@ eval "$(fzf --bash)" # Set up fzf key bindings and fuzzy completion
 
 
 [ -f "/home/overlord/.ghcup/env" ] && . "/home/overlord/.ghcup/env" # ghcup-env
+
+# odin
+export PATH=$HOME/github/Odin/:$PATH
