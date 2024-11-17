@@ -167,6 +167,7 @@ if [ -f $HOME/.config/synth-shell/better-history.sh ] && [ -n "$( echo $- | grep
 	source $HOME/.config/synth-shell/better-history.sh
 fi
 
+# fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export PATH=/opt/bin:$PATH
 
@@ -180,3 +181,7 @@ eval "$(fzf --bash)" # Set up fzf key bindings and fuzzy completion
 
 # odin
 export PATH=$HOME/github/Odin/:$PATH
+export PATH=/usr/share/:$PATH
+
+# .local
+export PATH=~/.local/bin:$PATH
