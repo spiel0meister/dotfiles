@@ -176,12 +176,11 @@ alias cd="z"
 
 eval "$(fzf --bash)" # Set up fzf key bindings and fuzzy completion
 
-
 [ -f "/home/overlord/.ghcup/env" ] && . "/home/overlord/.ghcup/env" # ghcup-env
 
 # odin
 export PATH=$HOME/github/Odin/:$PATH
-export PATH=/usr/share/:$PATH
+export PATH=$PATH:/usr/share/
 
 # .local
-export PATH=~/.local/bin:$PATH
+export PATH=$PATH:~/.local/bin
