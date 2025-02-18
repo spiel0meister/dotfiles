@@ -145,9 +145,9 @@ alias mv="mv -v"
 
 ##-----------------------------------------------------
 ## synth-shell-prompt.sh
-if [ -f $HOME/.config/synth-shell/synth-shell-prompt.sh ] && [ -n "$( echo $- | grep i )" ]; then
-	source $HOME/.config/synth-shell/synth-shell-prompt.sh
-fi
+# if [ -f $HOME/.config/synth-shell/synth-shell-prompt.sh ] && [ -n "$( echo $- | grep i )" ]; then
+# 	source $HOME/.config/synth-shell/synth-shell-prompt.sh
+# fi
 
 ##-----------------------------------------------------
 ## better-ls
@@ -183,4 +183,28 @@ export PATH=$HOME/github/Odin/:$PATH
 export PATH=$PATH:/usr/share/
 
 # .local
-export PATH=$PATH:~/.local/bin
+export PATH=$PATH:~/.local/bin:$HOME/.venv/bin/
+
+# flatpak
+export XDG_DATA_DIRS=$XDG_DATA_DIRS:/var/lib/flatpak/exports/share:/home/sovic/.local/share/flatpak/exports/share
+
+# prompt
+get_git_branch() {
+    local git=$(which git)
+    if [[ $git == "" ]]; then
+        echo ""
+        return
+    fi
+
+    local branch=$($git branch --show-current 2> /dev/null)
+    echo $branch
+    return
+}
+
+branch=$(get_git_branch)
+if [[ $branch == "" ]]; then
+    export PS1="[34m\u[0m@[34m\h[0m:[32m\w[0m$ "
+else
+    export PS1="[34m\u[0m@[34m\h[0m:[32m\w[0m ([33m$branch[0m)$ "
+fi
+
