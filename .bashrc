@@ -171,10 +171,11 @@ fi
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export PATH=/opt/bin:$PATH
 
+eval "$(fzf --bash)" # Set up fzf key bindings and fuzzy completion
+
+# zoxide
 eval "$(zoxide init bash)" # required for zoxide
 alias cd="z"
-
-eval "$(fzf --bash)" # Set up fzf key bindings and fuzzy completion
 
 [ -f "/home/overlord/.ghcup/env" ] && . "/home/overlord/.ghcup/env" # ghcup-env
 
@@ -185,26 +186,12 @@ export PATH=$PATH:/usr/share/
 # .local
 export PATH=$PATH:~/.local/bin:$HOME/.venv/bin/
 
+# .cargo
+export PATH=$PATH:~/.cargo/bin:$HOME/.venv/bin/
+
 # flatpak
 export XDG_DATA_DIRS=$XDG_DATA_DIRS:/var/lib/flatpak/exports/share:/home/sovic/.local/share/flatpak/exports/share
 
 # prompt
-get_git_branch() {
-    local git=$(which git)
-    if [[ $git == "" ]]; then
-        echo ""
-        return
-    fi
-
-    local branch=$($git branch --show-current 2> /dev/null)
-    echo $branch
-    return
-}
-
-branch=$(get_git_branch)
-if [[ $branch == "" ]]; then
-    export PS1="[34m\u[0m@[34m\h[0m:[32m\w[0m$ "
-else
-    export PS1="[34m\u[0m@[34m\h[0m:[32m\w[0m ([33m$branch[0m)$ "
-fi
+export PS1="[34m\u[0m@[34m\h[0m:[32m\w[0m$ "
 
