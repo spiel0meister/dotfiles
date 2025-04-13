@@ -167,6 +167,9 @@ if [ -f $HOME/.config/synth-shell/better-history.sh ] && [ -n "$( echo $- | grep
 	source $HOME/.config/synth-shell/better-history.sh
 fi
 
+# .local
+export PATH=$PATH:~/.local/bin:$HOME/.venv/bin/
+
 # fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export PATH=/opt/bin:$PATH
@@ -175,16 +178,13 @@ eval "$(fzf --bash)" # Set up fzf key bindings and fuzzy completion
 
 # zoxide
 eval "$(zoxide init bash)" # required for zoxide
-alias cd="z"
+# alias cd="z"
 
 [ -f "/home/overlord/.ghcup/env" ] && . "/home/overlord/.ghcup/env" # ghcup-env
 
 # odin
 export PATH=$HOME/github/Odin/:$PATH
 export PATH=$PATH:/usr/share/
-
-# .local
-export PATH=$PATH:~/.local/bin:$HOME/.venv/bin/
 
 # .cargo
 export PATH=$PATH:~/.cargo/bin:$HOME/.venv/bin/
@@ -193,5 +193,30 @@ export PATH=$PATH:~/.cargo/bin:$HOME/.venv/bin/
 export XDG_DATA_DIRS=$XDG_DATA_DIRS:/var/lib/flatpak/exports/share:/home/sovic/.local/share/flatpak/exports/share
 
 # prompt
-export PS1="[34m\u[0m@[34m\h[0m:[32m\w[0m$ "
+prompt_hook() {
+    get_git_branch() {
+        if ! ( which git > /dev/null ); then
+            echo ""
+            return 0
+        fi
+
+        branch=$(git branch --show-current 2> /dev/null)
+        if [[ -z "$branch" ]]; then
+            echo ""
+            return 0
+        fi
+
+        echo "$branch"
+        return 0
+    }
+
+    branch=$(get_git_branch)
+    if ! [[ -z "$branch" ]]; then
+            export PS1="[34m\u[0m@[34m\h[0m:[32m\w[0m ([33m$branch[0m)$ "
+    else
+            export PS1="[34m\u[0m@[34m\h[0m:[32m\w[0m$ "
+    fi
+}
+
+export PROMPT_COMMAND=prompt_hook
 
