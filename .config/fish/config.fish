@@ -1,6 +1,22 @@
 function fish_greeting
 end
 
+function fish_prompt
+    function get_git_branch
+        if which git > /dev/null
+            echo $(git branch --show-current 2> /dev/null)
+        end
+        echo ""
+    end
+
+    set branch $(get_git_branch)
+    if test -n branch
+        echo "[34m$USER[0m@[34m$hostname[0m [32m$PWD[0m ([33m$(string trim $branch)[0m)\$ "
+    else
+        echo "[34m$USER[0m@[34m$hostname[0m [32m$PWD[0m\$ "
+    end
+end
+
 alias ls="ls -al --color"
 alias nv="nvim"
 
