@@ -8,7 +8,7 @@ function fish_prompt
             set branch "$(git branch --show-current)"
             set prompt $(string join "" $prompt " ([33m$branch[0m)")
 
-            if test -n "$(git status -u no --porcelain 2> /dev/null)"
+            if git status -u no --porcelain -b 2> /dev/null | grep ahead > /dev/null
                 set prompt $(string join "" $prompt "^")
             end
 
