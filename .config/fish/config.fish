@@ -8,7 +8,13 @@ function fish_prompt
     if which git > /dev/null
         if git status > /dev/null 2> /dev/null
             set branch "$(git branch --show-current)"
-            set prompt $(string join "" $prompt " ([33m$branch[0m)")
+            set commit_hash "$(git rev-parse --short=7 HEAD)"
+
+            if [ -n "$branch" ]
+                set prompt $(string join "" $prompt " ([33m$branch[0m)")
+            else if [ -n "$commit_hash" ]
+                set prompt $(string join "" $prompt " [[33m$commit_hash[0m]")
+            end
 
             if git status -u no --porcelain -b 2> /dev/null | grep ahead > /dev/null
                 set prompt $(string join "" $prompt "^")
