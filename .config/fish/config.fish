@@ -39,7 +39,7 @@ function fish_prompt
     echo -n "$prompt"
 end
 
-alias ls="ls -al --color"
+alias ls="ls -alh --color"
 alias nv="nvim"
 
 fish_add_path $HOME/.local/ $HOME/github/Odin/ $HOME/.cargo/bin/
