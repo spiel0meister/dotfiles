@@ -2,7 +2,16 @@ function fish_greeting
 end
 
 function fish_prompt
+    set -l last_status $status
+
     set time $(date +"%H:%M")
+    set prompt ""
+
+    if test $last_status -eq 0
+        set prompt $(string join "" $prompt "[92mS[0m ")
+    else
+        set prompt $(string join "" $prompt "[31mF[0m ")
+    end
 
     set prompt $(string join "" $prompt "[90m[$time][0m [34m$USER[0m@[34m$hostname[0m [32m$(prompt_pwd -D 3)[0m")
     if which git > /dev/null
