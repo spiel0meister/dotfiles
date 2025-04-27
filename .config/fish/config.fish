@@ -41,7 +41,7 @@ end
 
 function fish_right_prompt
     set file_count $(command ls -al | grep -E "^[^d].*" | wc -l)
-    set dir_count $(command ls -al | grep -E "^d.*" | wc -l)
+    set dir_count $(math $(command ls -al | grep -E "^d.*" | wc -l) - 2)
 
     echo "[$file_count files] [$dir_count dirs]"
 end
