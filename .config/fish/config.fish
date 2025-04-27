@@ -39,6 +39,13 @@ function fish_prompt
     echo -n "$prompt"
 end
 
+function fish_right_prompt
+    set file_count $(command ls -al | grep -E "^[^d].*" | wc -l)
+    set dir_count $(command ls -al | grep -E "^d.*" | wc -l)
+
+    echo "[$file_count files] [$dir_count dirs]"
+end
+
 alias ls="ls -alh --color"
 alias nv="nvim"
 
