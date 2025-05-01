@@ -50,7 +50,7 @@
 
 shell-integration = fish
 
-# foreground =
+# appearance
 background = #111111
 
 font-family = Iosevka Nerd Font
