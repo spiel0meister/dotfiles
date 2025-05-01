@@ -50,6 +50,7 @@ alias ls="ls -alh --color"
 alias nv="nvim"
 
 fish_add_path $HOME/.local/ $HOME/github/Odin/ $HOME/.cargo/bin/
+set -a PATH $HOME/scripts/
 
 # zoxide
 zoxide init fish | source

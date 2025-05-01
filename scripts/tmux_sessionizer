@@ -1,0 +1,17 @@
+#!/usr/bin/env fish
+
+function switch_to
+    set argc $(count $argv)
+    if [ argc -lt 1 ]
+        echo "Usage: switch_to <session-name>" >&2
+        return 1
+    end
+
+    if [ -n "$TMUX" ]
+        tmux switch-client -t $argv[1]
+    else
+        tmux attach-session -t $argv[1]
+    end
+end
+
+
