@@ -17,7 +17,7 @@ function fish_prompt
     if which git > /dev/null
         if git status > /dev/null 2> /dev/null
             set branch "$(git branch --show-current)"
-            set human_readable "$(git describe --always --abbrev=7)"
+            set human_readable "$(git describe --always --abbrev=7 2> /dev/null)"
 
             if [ -n "$branch" ]
                 set prompt $(string join "" $prompt " ([33m$branch[0m)")
