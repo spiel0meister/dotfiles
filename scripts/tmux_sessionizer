@@ -2,8 +2,8 @@
 
 function switch_to
     set argc $(count $argv)
-    if [ argc -lt 1 ]
-        echo "Usage: switch_to <session-name>" >&2
+    if [ $argc -lt 1 ]
+        echo "Usage: $(status filename) <session-name>" >&2
         return 1
     end
 
@@ -14,4 +14,12 @@ function switch_to
     end
 end
 
+set selected $(zoxide query --interactive)
+if [ -n $selected ]
+    set sessions $(tmux list-sessions)
+    if ! echo "$sessions" | grep -E "^$selected:"
+        tmux new-session -s $selected -c $selected
+    end
+    switch_to $selected
+end
 
