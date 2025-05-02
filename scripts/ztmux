@@ -30,7 +30,7 @@ if [ $argc -gt 0 ]
     if [ $status -eq 1 ]
         error "Path $selected does not exist"
     end
-    if ! zoxide query "$selected"
+    if ! zoxide query "$selected" 2> /dev/null
         zoxide add "$selected"
     end
 else
