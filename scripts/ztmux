@@ -18,7 +18,7 @@ set selected $(zoxide query --interactive)
 if [ -n $selected ]
     set sessions $(tmux list-sessions)
     if ! echo "$sessions" | grep -E "^$selected:"
-        tmux new-session -s $selected -c $selected
+        tmux new-session -ds $selected -c $selected
     end
     switch_to $selected
 end
