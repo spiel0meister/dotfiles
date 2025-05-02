@@ -14,7 +14,17 @@ function switch_to
     end
 end
 
-set selected $(zoxide query --interactive)
+set argc $(count $argv)
+if [ $argc -gt 0 ]
+    set selected $argv[1]
+    set selected $(realpath $selected)
+    if ! zoxide query "$selected"
+        zoxide add "$selected"
+    end
+else
+    set selected $(zoxide query --interactive)
+end
+
 if [ -n $selected ]
     set sessions $(tmux list-sessions)
     if ! echo "$sessions" | grep -E "^$selected:"
