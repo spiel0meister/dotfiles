@@ -1,10 +1,19 @@
 #!/usr/bin/env fish
 
+function error
+    set argc $(count argv)
+    if [ $argc -lt 1 ]
+        echo "Usage: $(status filename) <error-msg>" >&2
+        return 1
+    end
+    echo "ERROR: " $argv[1]
+    exit 1
+end
+
 function switch_to
     set argc $(count $argv)
     if [ $argc -lt 1 ]
-        echo "Usage: $(status filename) <session-name>" >&2
-        return 1
+        error "Usage: $(status filename) <session-name>" >&2
     end
 
     if [ -n "$TMUX" ]
@@ -18,6 +27,9 @@ set argc $(count $argv)
 if [ $argc -gt 0 ]
     set selected $argv[1]
     set selected $(realpath $selected)
+    if [ $status -eq 1 ]
+        error "Path $selected does not exist"
+    end
     if ! zoxide query "$selected"
         zoxide add "$selected"
     end
